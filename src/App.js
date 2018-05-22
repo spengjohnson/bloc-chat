@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router-dom'; 
+import React, { Component } from 'react'; 
 import './App.css';
 import * as firebase from 'firebase'; 
 import RoomList from './components/RoomList'; 
@@ -23,7 +22,7 @@ class App extends Component {
           <h1>Welcome to Bloc Chat</h1>
         </header>
        <main>
-        <Route path="./components/RoomList" component={RoomList} /> 
+        <RoomList firebase={firebase} /> 
        </main>
       </div>
     );
