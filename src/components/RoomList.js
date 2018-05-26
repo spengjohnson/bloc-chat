@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class RoomList extends Component {
 	constructor(props) { 
-		super(props); 
+		super(props);
 		this.state = { rooms: [] }; 
 	
 	this.roomsRef = this.props.firebase.database().ref('rooms');
@@ -18,6 +18,25 @@ class RoomList extends Component {
 		}); 
 	}
 
+	handleChange(event) {
+		(event) => this.setState({value: event.target.value}); 
+		//need to handle & display new text 
+	}
+
+	handleSubmit(event) { 
+		(event) => this.state.value; 
+		console.log("A new room was created"); 
+		event.preventDefault(); 
+	}
+
+	createRoom(newRoomName) {
+		console.log(newRoomName); 
+		this.roomsRef.push({
+			name: newRoomName,  
+		
+		}); 
+	}
+
 	render() {
 		return (
 			<div id="roomlist">{this.state.rooms.map( (room, index) => 
@@ -25,11 +44,20 @@ class RoomList extends Component {
     				<ul>{room.name}</ul>
     				</div>
 			)}
-			</div>
+				<form onSubmit={this.handleSubmit}>
+					<label>
+						Create Room: 
+							<input type="text" value={this.state.value} onChange={this.handleChange} />
+					</label>
+					<input type="submit" value="Submit" 
+					createRoom /> 
 
+				</form> 
+			</div> 
 		); 
 	}
 }
+
 
 
 
