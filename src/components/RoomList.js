@@ -24,9 +24,8 @@ class RoomList extends Component {
 	}
 
 	handleSubmit(event) { 
-		(event) => this.state.value; 
+		(event) => this.createRoom(this.state.value); 
 		console.log("A new room was created"); 
-		event.preventDefault(); 
 	}
 
 	createRoom(newRoomName) {
@@ -49,8 +48,7 @@ class RoomList extends Component {
 						Create Room: 
 							<input type="text" value={this.state.value} onChange={this.handleChange} />
 					</label>
-					<input type="submit" value="Submit" 
-					createRoom /> 
+					<input type="submit" value="Submit" /> 
 
 				</form> 
 			</div> 
