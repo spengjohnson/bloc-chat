@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class RoomList extends Component {
 	constructor(props) { 
 		super(props);
-		this.state = { rooms: [] }; 
+		this.state = { rooms: [], value:"" }; 
 	
 	this.roomsRef = this.props.firebase.database().ref('rooms');
 
@@ -19,12 +19,12 @@ class RoomList extends Component {
 	}
 
 	handleChange(event) {
-		(event) => this.setState({value: event.target.value}); 
+		this.setState({value: event.target.value}); 
 		//need to handle & display new text 
 	}
 
 	handleSubmit(event) { 
-		(event) => this.createRoom(this.state.value); 
+		this.createRoom(this.state.value); 
 		console.log("A new room was created"); 
 	}
 
@@ -43,10 +43,10 @@ class RoomList extends Component {
     				<ul>{room.name}</ul>
     				</div>
 			)}
-				<form onSubmit={this.handleSubmit}>
+				<form onSubmit={(e) => this.handleSubmit(e)}>
 					<label>
 						Create Room: 
-							<input type="text" value={this.state.value} onChange={this.handleChange} />
+							<input type="text" value={this.state.value} onChange={(e) => this.handleChange(e)} />
 					</label>
 					<input type="submit" value="Submit" /> 
 
