@@ -3,7 +3,10 @@ import React, { Component } from 'react';
 class RoomList extends Component {
 	constructor(props) { 
 		super(props);
-		this.state = { rooms: [], value:"" }; 
+		this.state = { 
+			rooms: [], 
+			value:'' 
+		}; 
 	
 	this.roomsRef = this.props.firebase.database().ref('rooms');
 
@@ -20,12 +23,12 @@ class RoomList extends Component {
 
 	handleChange(event) {
 		this.setState({value: event.target.value}); 
-		//need to handle & display new text 
 	}
 
 	handleSubmit(event) { 
-		this.createRoom(this.state.value); 
-		console.log("A new room was created"); 
+		event.preventDefault(); 
+		this.createRoom(this.state.value);
+		value: ""; 
 	}
 
 	createRoom(newRoomName) {
