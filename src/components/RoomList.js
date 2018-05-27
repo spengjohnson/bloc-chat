@@ -28,7 +28,7 @@ class RoomList extends Component {
 	handleSubmit(event) { 
 		event.preventDefault(); 
 		this.createRoom(this.state.value);
-		value: ""; 
+		this.setState({value: ""});
 	}
 
 	createRoom(newRoomName) {
