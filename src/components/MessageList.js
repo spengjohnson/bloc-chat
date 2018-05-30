@@ -10,8 +10,7 @@ class MessageList extends Component {
 		username: { email }
 	}; 
 
-	this.createMessage= this.createMessage.bind(this); 
-	this.handleActiveRoom = this.handleActiveRoom.bind(this); 
+	this.createMessage= this.createMessage.bind(this);  
 	this.messagesRef = this.props.firebase.database().ref('messages');
 	}; 
 
