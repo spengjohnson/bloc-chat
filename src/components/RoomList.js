@@ -39,6 +39,10 @@ class RoomList extends Component {
 		}); 
 	}
 
+	handleActiveRoom(room) {
+  		this.setState({activeRoom: event.target.room}); 
+	}
+
 	render() {
 		return (
 			<div id="roomlist">{this.state.rooms.map( (room, index) => 
