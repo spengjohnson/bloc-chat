@@ -15,7 +15,7 @@ class MessageList extends Component {
 	}; 
 
 	componentDidMount() {
-		this.roomsRef.on('child_added', snapshot => {
+		this.messagesRef.on('child_added', snapshot => {
 			const message = snapshot.val(); 
 			message.key = snapshot.key; 
 			this.setState ({ messages: this.state.messages.concat( message ) })
@@ -25,7 +25,7 @@ class MessageList extends Component {
 	createMessage(messages) {
 		this.messagesRef.push({
 			content: this.state.value, 
-			roomId: this.props.handleActiveRoom.key, 
+			roomID: this.props.handleActiveRoom.key, 
 			username: this.props.user.displayName, 
 			newMessage: ''
 		}); 
@@ -41,13 +41,15 @@ class MessageList extends Component {
 	
 
 	render() {
+		console.log(this.state.messages); 
 		return (
-			<div id="messages">{this.state.messages.map( (messages, index ) =>
+			 
+			<div id="messages">{this.state.messages.map( (message, index ) =>
 				<div key={index}>
-    				<ul>{messages.name}</ul>
+    				<ul>{message.content}</ul>
     				</div>
     			)}
-				<div id="roomID" onClick={(room) => this.changeActiveRoom(room)}>
+				<div id="roomID" >
 					<label>
 						Chat: 
 							<textarea value={this.state.value} />
