@@ -7,7 +7,7 @@ class MessageList extends Component {
 		messages: [], 
 		value: '', 
 		activeRoom: '', 
-		username: { email }
+		username: ''
 	}; 
 
 	this.createMessage= this.createMessage.bind(this);  
@@ -26,15 +26,15 @@ class MessageList extends Component {
 		this.messagesRef.push({
 			content: this.state.value, 
 			roomId: this.props.handleActiveRoom.key, 
-			username: this.props.user.email, 
+			username: this.props.user.displayName, 
 			newMessage: ''
 		}); 
 	}
 
 	sentAt() {
-		var sessionsRef= firebase.database().ref("sessions"); 
-		sessionsRef.push({
-			startedAt: firebase.database.ServerValue.TIMESTAMP	
+		this.props.firebase.database().ref("sessions"); 
+		this.sessionsRef.push({
+			startedAt: this.props.firebase.database.ServerValue.TIMESTAMP	
 		}); 
 		
 	}
@@ -47,14 +47,14 @@ class MessageList extends Component {
     				<ul>{messages.name}</ul>
     				</div>
     			)}
-				<form onClick={(e) => this.handleActiveRoom(e)}>
+				<div id="roomID" onClick={(room) => this.changeActiveRoom(room)}>
 					<label>
 						Chat: 
 							<textarea value={this.state.value} />
 					</label>
 					<input type="submit" value="Submit" /> 
 
-				</form> 
+				</div> 
 			</div> 
 			)
 	}

@@ -10,7 +10,7 @@ class RoomList extends Component {
 	
 	this.roomsRef = this.props.firebase.database().ref('rooms');
 
-	} 
+	}; 
 
 	componentDidMount() {
 		this.roomsRef.on('child_added', snapshot => {
@@ -39,16 +39,13 @@ class RoomList extends Component {
 		}); 
 	}
 
-	handleActiveRoom(room) {
-  		this.setState({activeRoom: event.target.room}); 
-	}
 
 	render() {
 		return (
 			<div id="roomlist">{this.state.rooms.map( (room, index) => 
-    			<div key={index}>
-    				<ul>{room.name}</ul>
-    				</div>
+    			<ul key={index}>
+    				<li>{room.name}</li>
+    				</ul>
 			)}
 				<form onSubmit={(e) => this.handleSubmit(e)}>
 					<label>
