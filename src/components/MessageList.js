@@ -44,11 +44,10 @@ class MessageList extends Component {
 		return (
 
 			<div id="messages">{this.state.messages
-				.filter((messages)=> this.props.activeRoom === messages.roomID)
+				.filter((messages)=> this.props.activeRoom.key === messages.roomID)
 				.map( (message, index ) =>
 				<div key={index}>
     				<ul>{message.content}</ul>
-    				<h1>Room: {this.props.activeRoom}</h1>
     				</div>
     			)}
 				<div id="roomID" >
