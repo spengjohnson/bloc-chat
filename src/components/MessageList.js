@@ -38,15 +38,17 @@ class MessageList extends Component {
 		}); 
 		
 	}
-	
 
+	
 	render() {
-		console.log(this.state.messages); 
 		return (
-			 
-			<div id="messages">{this.state.messages.map( (message, index ) =>
+
+			<div id="messages">{this.state.messages
+				.filter((messages)=> this.props.activeRoom === messages.roomID)
+				.map( (message, index ) =>
 				<div key={index}>
     				<ul>{message.content}</ul>
+    				<h1>Room: {this.props.activeRoom}</h1>
     				</div>
     			)}
 				<div id="roomID" >
