@@ -1,10 +1,13 @@
 import React, { Component } from 'react'; 
 
+const displayName = ({value}) => <span>{value}</span> 
+
 class User extends Component {
 	constructor(props) {
 		super(props); 
 		this.state = {
 			email: '', 
+			displayName: ''
 		}; 
 	
 	this.provider = new this.props.firebase.auth.GoogleAuthProvider();
@@ -27,22 +30,26 @@ class User extends Component {
 }
 
 	signOut() {
-		this.props.firebase.auth().signOut();		
+		this.props.firebase.auth().signOut().then(() => {console.log("sign out");
+	})
+		.catch(error => console.log(error)); 
 	}
 
 	componentDidMount() {
 		this.props.firebase.auth().onAuthStateChanged( user => {
-  		this.props.user;
+  		this.props.setUser(user);
 		});
 	}
 
 	render() {
+		console.log(this.props.user); 
 		return (
 			<div className="login">
 				<button onClick={() => this.login()}>Sign-in</button> 
 				<button onClick={() => this.signOut()}>Sign-out</button>
+				<div>UserID: {this.props.user ? this.props.user.displayName : 'Guest'} </div>
 			</div> 
-			)
+			); 
 	}
 }
 
