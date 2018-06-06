@@ -41,10 +41,12 @@ class MessageList extends Component {
 		
 	}
 
-	sendMessage(newMessage, event) {
-		(event) => event.preventDefault(newMessage, event); 
+	sendMessage(event) {
+		//(event) => event.preventDefault(newMessage, event); 
+		//this.setState({ value: event.target.value }); 
+		console.log(event.target);
 		this.createMessage(this.messagesRef.push({
-			message: newMessage, 
+			message: event.target.value, 
 		})); 
 	}
 
@@ -62,7 +64,10 @@ class MessageList extends Component {
 				<div id="roomID" >
 					<label>
 						New Message: 
-							<textarea placeholder="type new messages here" value={this.state.value} onChange= {(event) => this.sendMessage(newMessage, event)}/>
+							<textarea 
+							placeholder="type new messages here" 
+							value={this.state.value} 
+							onChange= {(event) => this.sendMessage(event.target.value)}/>
 					</label>
 					<input type="submit" value="Submit" /> 
 
