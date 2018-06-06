@@ -27,7 +27,7 @@ class MessageList extends Component {
 	createMessage(messages) {
 		this.messagesRef.push({
 			content: this.state.value, 
-			roomID: this.props.handleActiveRoom.key, 
+			roomID: this.props.activeRoom.key, 
 			username: this.props.user ? this.props.user.displayName : 'Guest', 
 			newMessage: ''
 		}); 
@@ -43,11 +43,16 @@ class MessageList extends Component {
 
 	sendMessage(event) {
 		//(event) => event.preventDefault(newMessage, event); 
-		//this.setState({ value: event.target.value }); 
+		
 		console.log(event.target);
 		this.createMessage(this.messagesRef.push({
 			message: event.target.value, 
 		})); 
+	}
+
+	handleMessage(event) {
+		event.preventDefault(); 
+		this.setState({ value: event.target.value }); 
 	}
 
 	
@@ -67,9 +72,10 @@ class MessageList extends Component {
 							<textarea 
 							placeholder="type new messages here" 
 							value={this.state.value} 
-							onChange= {(event) => this.sendMessage(event.target.value)}/>
+							onChange= {(event) => this.handleMessage(event)}
+							/>
 					</label>
-					<input type="submit" value="Submit" /> 
+					<input type="submit" value="Submit" onClick= {() => this.createMessage()} /> 
 
 				</div> 
 			</div> 
