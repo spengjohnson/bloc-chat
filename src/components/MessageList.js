@@ -7,11 +7,13 @@ class MessageList extends Component {
 		messages: [], 
 		value: '', 
 		activeRoom: '', 
-		username: ''
+		username: '', 
+		newMessage: ''
 	}; 
 
 	this.createMessage= this.createMessage.bind(this);  
 	this.messagesRef = this.props.firebase.database().ref('messages'); 
+	this.newMessages = this.props.firebase.database().ref('content'); 
 	}; 
 
 	componentDidMount() {
@@ -39,8 +41,8 @@ class MessageList extends Component {
 		
 	}
 
-	sendMessage(newMessage) {
-		event.preventDefault(); 
+	sendMessage(newMessage, event) {
+		(event) => event.preventDefault(newMessage, event); 
 		this.createMessage(this.messagesRef.push({
 			message: newMessage, 
 		})); 
@@ -60,7 +62,7 @@ class MessageList extends Component {
 				<div id="roomID" >
 					<label>
 						New Message: 
-							<textarea placeholder="type new messages here" value={this.state.value} onChange= {(event) => this.sendMessage(event)}/>
+							<textarea placeholder="type new messages here" value={this.state.value} onChange= {(event) => this.sendMessage(newMessage, event)}/>
 					</label>
 					<input type="submit" value="Submit" /> 
 
