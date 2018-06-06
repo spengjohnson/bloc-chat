@@ -7,7 +7,8 @@ class User extends Component {
 		super(props); 
 		this.state = {
 			email: '', 
-			displayName: ''
+			displayName: '', 
+			newMessage: ''
 		}; 
 	
 	this.provider = new this.props.firebase.auth.GoogleAuthProvider();
@@ -40,6 +41,8 @@ class User extends Component {
   		this.props.setUser(user);
 		});
 	}
+
+
 
 	render() {
 		console.log(this.props.user); 
