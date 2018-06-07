@@ -30,8 +30,10 @@ class MessageList extends Component {
 			roomID: this.props.activeRoom.key, 
 			username: this.props.user ? this.props.user.displayName : 'Guest', 
 			newMessage: ''
+			//may need to add property called sentAt that's being sent to Firebase.
 		}); 
 		this.setState({ value: ''})
+
 	}
 
 	sentAt() {
@@ -60,7 +62,7 @@ class MessageList extends Component {
 				.filter((messages)=> this.props.activeRoom.key === messages.roomID)
 				.map( (message, index ) =>
 				<div key={index}>
-    				<ul>{message.content}{message.username}</ul>
+    				<ul>{message.username} : {message.content} {message.sentAt}</ul>
     				</div>
     			)}
 				<div id="roomID" >
