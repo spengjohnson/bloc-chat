@@ -31,6 +31,7 @@ class MessageList extends Component {
 			username: this.props.user ? this.props.user.displayName : 'Guest', 
 			newMessage: ''
 		}); 
+		this.setState({ value: ''})
 	}
 
 	sentAt() {
@@ -42,16 +43,12 @@ class MessageList extends Component {
 	}
 
 	sendMessage(event) {
-		//(event) => event.preventDefault(newMessage, event); 
-		
-		console.log(event.target);
 		this.createMessage(this.messagesRef.push({
 			message: event.target.value, 
 		})); 
 	}
 
 	handleMessage(event) {
-		event.preventDefault(); 
 		this.setState({ value: event.target.value }); 
 	}
 
@@ -63,7 +60,7 @@ class MessageList extends Component {
 				.filter((messages)=> this.props.activeRoom.key === messages.roomID)
 				.map( (message, index ) =>
 				<div key={index}>
-    				<ul>{message.content}</ul>
+    				<ul>{message.content}{message.username}</ul>
     				</div>
     			)}
 				<div id="roomID" >
