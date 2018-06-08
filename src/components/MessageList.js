@@ -14,6 +14,8 @@ class MessageList extends Component {
 	this.createMessage= this.createMessage.bind(this);  
 	this.messagesRef = this.props.firebase.database().ref('messages'); 
 	this.newMessages = this.props.firebase.database().ref('content'); 
+	this.sessionsRef = this.props.firebase.database().ref('sentAt'); 
+
 	}; 
 
 	componentDidMount() {
@@ -29,20 +31,19 @@ class MessageList extends Component {
 			content: this.state.value, 
 			roomID: this.props.activeRoom.key, 
 			username: this.props.user ? this.props.user.displayName : 'Guest', 
-			newMessage: ''
+			newMessage: '',
+			sentAt: this.props.firebase.database().ref('sentAt')
+					this.sessionsRef.push({
+				startedAt: this.props.firebase.database.ServerValue.TIMESTAMP,	
 			//may need to add property called sentAt that's being sent to Firebase.
 		}); 
 		this.setState({ value: ''})
 
 	}
 
-	sentAt() {
-		this.props.firebase.database().ref("sessions"); 
-		this.sessionsRef.push({
-			startedAt: this.props.firebase.database.ServerValue.TIMESTAMP	
-		}); 
-		
-	}
+	
+
+	
 
 	sendMessage(event) {
 		this.createMessage(this.messagesRef.push({
