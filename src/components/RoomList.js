@@ -39,6 +39,9 @@ class RoomList extends Component {
 		}); 
 	}
 
+	deleteRoom() {
+		this.roomsRef.child(this.props.activeRoom).remove();
+	}
 
 	render() {
 		return (
@@ -51,6 +54,9 @@ class RoomList extends Component {
 					<label>
 						Create Room: 
 							<input type="text" value={this.state.value} onChange={(e) => this.handleChange(e)} />
+					</label>
+					<label>
+							<button name ="Delete" onClick={ this.props.deleteRoom }> Delete Room </button>
 					</label>
 					<input type="submit" value="Submit" /> 
 

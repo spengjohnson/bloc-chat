@@ -31,11 +31,12 @@ class App extends Component {
     this.setState({ user: user }); 
   }
 
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>Welcome to Bloc Chat</h1>
+          <h1>TeleMed Chat</h1>
         </header>
        <main>
           <RoomList firebase={firebase} 
