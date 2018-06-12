@@ -36,7 +36,8 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>TeleMed Chat</h1>
+          <h1>TeleMed Chat</h1> <ion-icon name="medkit"></ion-icon>
+          <p>Got health questions that don't feel worth a trip to the doctor's office? Discuss them here to get a health professional's advice!</p>
         </header>
        <main>
           <RoomList firebase={firebase} 
@@ -44,7 +45,7 @@ class App extends Component {
           activeRoom= {this.state.activeRoom} />
           <MessageList firebase={firebase} activeRoom={this.state.activeRoom} user={this.state.user} />
           <User firebase={firebase} user={this.state.user} setUser={this.setUser.bind(this)} />
-          
+
 
        </main>
       </div>

@@ -40,10 +40,12 @@ class RoomList extends Component {
 	}
 
 	deleteRoom() {
-		this.roomsRef.child(this.props.activeRoom.roomID).remove();
+		console.log(this.props.activeRoom);
+		//this.roomsRef.child(this.props.activeRoom.roomID.key).remove();
 	}
 
 	render() {
+		console.log(this.state.activeRoom)
 		return (
 			<div id="roomlist">{this.state.rooms.map( (room, index) => 
     			<ul key={index}>
