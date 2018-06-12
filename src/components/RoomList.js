@@ -19,6 +19,11 @@ class RoomList extends Component {
 			this.setState ({ rooms: this.state.rooms.concat( room ) }); 
 			//console.log(this.state.rooms); 
 		}); 
+		this.roomsRef.on('child_changed', snapshot =>{
+			const room = snapshot.val(); 
+			room.key = snapshot.key; 
+			this.setState({rooms: this.state.rooms.concat( room ) })
+		}); 
 	}
 
 	handleChange(event) {
@@ -40,12 +45,11 @@ class RoomList extends Component {
 	}
 
 	deleteRoom() {
-		console.log(this.props.activeRoom);
-		//this.roomsRef.child(this.props.activeRoom.roomID.key).remove();
+		this.roomsRef.child(this.props.activeRoom.key).remove();
 	}
 
 	render() {
-		console.log(this.state.activeRoom)
+		
 		return (
 			<div id="roomlist">{this.state.rooms.map( (room, index) => 
     			<ul key={index}>

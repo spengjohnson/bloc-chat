@@ -33,6 +33,7 @@ class App extends Component {
 
 
   render() {
+    console.log(this.state.activeRoom)
     return (
       <div className="App">
         <header className="App-header">
