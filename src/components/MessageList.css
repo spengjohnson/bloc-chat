@@ -1,3 +1,13 @@
 #messages {
 	background-color: grey; 
+	font-family: PT Sans; 
 }
+
+body {
+	font-family: PT Sans;
+	background-color: #EFF8FF; 
+}
+
+/*ul {
+	list-style-type: none; 
+}*/

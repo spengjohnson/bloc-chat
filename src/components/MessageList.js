@@ -57,7 +57,7 @@ class MessageList extends Component {
 				.filter((messages)=> this.props.activeRoom.key === messages.roomID)
 				.map( (message, index ) =>
 				<div key={index}>
-    				<ul>{message.username} : {message.content} {message.sentAt}</ul>
+    				<ul>{message.username} : {message.content} ({message.sentAt}) </ul>
     				</div>
     			)}
 				<div id="roomID" >

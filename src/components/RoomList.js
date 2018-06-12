@@ -17,7 +17,7 @@ class RoomList extends Component {
 			const room = snapshot.val(); 
 			room.key = snapshot.key; 
 			this.setState ({ rooms: this.state.rooms.concat( room ) }); 
-			console.log(this.state.rooms); 
+			//console.log(this.state.rooms); 
 		}); 
 	}
 
@@ -40,7 +40,7 @@ class RoomList extends Component {
 	}
 
 	deleteRoom() {
-		this.roomsRef.child(this.props.activeRoom).remove();
+		this.roomsRef.child(this.props.activeRoom.roomID).remove();
 	}
 
 	render() {
@@ -56,7 +56,7 @@ class RoomList extends Component {
 							<input type="text" value={this.state.value} onChange={(e) => this.handleChange(e)} />
 					</label>
 					<label>
-							<button name ="Delete" onClick={ this.props.deleteRoom }> Delete Room </button>
+							<button name ="Delete" onClick={ this.deleteRoom.bind(this) }> Delete Room </button>
 					</label>
 					<input type="submit" value="Submit" /> 
 
