@@ -53,13 +53,13 @@ class MessageList extends Component {
 	render() {
 		return (
 			console.log(this.props.activeRoom), 
-			<div id="messages">{this.state.messages
+			<div id="messages">{this.props.activeRoom && (this.state.messages
 				.filter((messages)=> this.props.activeRoom.key === messages.roomID)
 				.map( (message, index ) =>
 				<div key={index}>
     				<ul>{message.username} : {message.content} ({message.sentAt}) </ul>
     				</div>
-    			)}
+    			))}
 				<div id="roomID" >
 					<label>
 						New Message: 

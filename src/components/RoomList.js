@@ -19,11 +19,16 @@ class RoomList extends Component {
 			this.setState ({ rooms: this.state.rooms.concat( room ) }); 
 			//console.log(this.state.rooms); 
 		}); 
-		this.roomsRef.on('child_changed', snapshot =>{
-			const room = snapshot.val(); 
-			room.key = snapshot.key; 
-			this.setState({rooms: this.state.rooms.concat( room ) })
-		}); 
+		this.roomsRef.on("child_removed", snapshot => {
+	 	this.setState( () => ({
+	    rooms: this.state.rooms.filter(
+	      room => this.props.activeRoom.key !== snapshot.key
+		    )
+		  }), 
+		() => this.props.changeActiveRoom(this.state.rooms[0])
+	); 
+	});
+
 	}
 
 	handleChange(event) {
