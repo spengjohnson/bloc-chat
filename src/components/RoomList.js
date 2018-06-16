@@ -19,16 +19,12 @@ class RoomList extends Component {
 			this.setState ({ rooms: this.state.rooms.concat( room ) }); 
 			//console.log(this.state.rooms); 
 		}); 
-		this.roomsRef.on("child_removed", snapshot => {
-	 	this.setState( () => ({
-	    rooms: this.state.rooms.filter(
-	      room => this.props.activeRoom.key !== snapshot.key
-		    )
-		  }), 
-		() => this.props.changeActiveRoom(this.state.rooms[0])
-	); 
-	});
-
+	    this.roomsRef.on("child_removed", snapshot => {
+      		let newRooms = this.state.rooms.filter(
+        	room => this.props.activeRoom.key !== room.key
+      		);
+      	this.setState({ rooms: newRooms });
+    	});
 	}
 
 	handleChange(event) {
@@ -66,12 +62,11 @@ class RoomList extends Component {
 						Create Room: 
 							<input type="text" value={this.state.value} onChange={(e) => this.handleChange(e)} />
 					</label>
-					<label>
-							<button name ="Delete" onClick={ this.deleteRoom.bind(this) }> Delete Room </button>
-					</label>
+
 					<input type="submit" value="Submit" /> 
 
 				</form> 
+				<button name ="Delete" onClick={ this.deleteRoom.bind(this) }> Delete Room </button>
 			</div> 
 		); 
 	}
