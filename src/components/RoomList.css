@@ -1,0 +1,15 @@
+li {
+	color: #1C7536;
+	display: inline;
+	float: left;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+li:active {
+	background-color: yellow; 
+}
+
+li:hover {
+	cursor: pointer;
+}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'; 
+import './RoomList.css'; 
 
 class RoomList extends Component {
 	constructor(props) { 
@@ -54,13 +55,22 @@ class RoomList extends Component {
 		return (
 			<div id="roomlist">{this.state.rooms.map( (room, index) => 
     			<ul key={index}>
-    				<li onClick={() => this.props.changeActiveRoom(room)}>{ room.name }</li>
+    				<li onClick={() => this.props.changeActiveRoom(room)}>{ room.name }<hr/>
+    				{if ({room.name}===activeRoom) {
+	    					<strong>{room.name}</strong>
+	    					}
+	    					else{
+	    						{room.name}
+	    					}
+	    				}
+	    				{isActiveRoom ? yes : no }
+	    			</li>
+	    				
     			</ul>
 			)}
 				<form onSubmit={(e) => this.handleSubmit(e)}>
 					<label>
-						Create Room: 
-							<input type="text" value={this.state.value} onChange={(e) => this.handleChange(e)} />
+							<input type="text" value={this.state.value} placeholder= "create new room" onChange={(e) => this.handleChange(e)} />
 					</label>
 
 					<input type="submit" value="Submit" /> 

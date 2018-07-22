@@ -1,6 +1,6 @@
 .App {
-  text-align: center;
-  background-color: E7BAA0;
+  text-align: left;
+  background-color: white;
 }
 
 .App-logo {
@@ -10,7 +10,7 @@
 
 .App-header {
   background-color: #6CBF84;
-  height: 150px;
+  height: 100px;
   padding: 20px;
   color: white;
 }
@@ -26,4 +26,34 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+body, html {
+    height: 100%;
+        /* The image used */
+    background-image: rawpixel-597446-unsplash.jpg;
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+  font-family: Arvo; 
+  display: inline;
+  margin-right: 500px; 
+}
+
+ion-icon {
+  font-size: 30px;  
+  text-align: left;
+  margin-right: 10px;
+}
+
+p {
+  text-align: left;
 }

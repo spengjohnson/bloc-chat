@@ -47,11 +47,13 @@ class User extends Component {
 	render() {
 		console.log(this.props.user); 
 		return (
-			<div className="login">
+	
+			<span className="login">
 				<button onClick={() => this.login()}>Sign-in</button> 
 				<button onClick={() => this.signOut()}>Sign-out</button>
-				<div>UserID: {this.props.user ? this.props.user.displayName : 'Guest'} </div>
-			</div> 
+				<div class = "user">User: {this.props.user ? this.props.user.displayName : 'Guest'} </div>
+			</span> 
+
 			); 
 	}
 }
