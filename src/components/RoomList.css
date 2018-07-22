@@ -13,3 +13,8 @@ li:active {
 li:hover {
 	cursor: pointer;
 }
+
+li > .boldBigRoom {
+	font-weight: bolder;
+	font-size: 2em; 
+}

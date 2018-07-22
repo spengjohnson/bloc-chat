@@ -50,22 +50,14 @@ class RoomList extends Component {
 		this.roomsRef.child(this.props.activeRoom.key).remove();
 	}
 
+
 	render() {
 		
 		return (
 			<div id="roomlist">{this.state.rooms.map( (room, index) => 
     			<ul key={index}>
-    				<li onClick={() => this.props.changeActiveRoom(room)}>{ room.name }<hr/>
-    				{if ({room.name}===activeRoom) {
-	    					<strong>{room.name}</strong>
-	    					}
-	    					else{
-	    						{room.name}
-	    					}
-	    				}
-	    				{isActiveRoom ? yes : no }
-	    			</li>
-	    				
+					<li style={{fontSize: room === this.props.activeRoom ? '1.5em' :'1em', fontWeight: room === this.props.activeRoom ? 'bold': 'normal'}} onClick={() => this.props.changeActiveRoom(room)}>{ room.name }<hr/>	 
+					</li>   				
     			</ul>
 			)}
 				<form onSubmit={(e) => this.handleSubmit(e)}>
